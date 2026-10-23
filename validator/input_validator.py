@@ -9,6 +9,7 @@ class InputValidator:
         if  re.search(r"[^A-Za-z ]",name):
             raise ValueError("Name contains numbers or special Characters")
         return True
+
         
 
     @staticmethod
@@ -31,6 +32,11 @@ class InputValidator:
 
 
     def id_checker(storage, id):
+
+        if re.fullmatch(r"EMP\d{3}",id):
+            return True
+        raise ValueError("Provided ID is invalid")
+
         match storage:
             case DatabaseType.database.value:
                 if DatabaseDAO.read_one_employee(id) is None:
