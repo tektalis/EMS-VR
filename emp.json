@@ -1,0 +1,18 @@
+[
+    {
+        "ID": "EMP002",
+        "Name": "ram",
+        "Age": 30,
+        "Salary": 30000.0,
+        "Department": "HR",
+        "Mobile": "1234567890"
+    },
+    {
+        "ID": "EMP003",
+        "Name": "Risheel",
+        "Age": 12,
+        "Salary": 456789.0,
+        "Department": "IT",
+        "Mobile": "1234567890"
+    }
+]
