@@ -79,10 +79,13 @@ class EmployeeController:
                         print("Enter Employee ID to update:")
                         id=input()
                         InputValidator.id_checker(self.repository,id)
+
                         emp=self.repository.read_one_employee(id)
                         name = input("Enter name: ").strip() or emp.get_name()
+
                         InputValidator.name_checker(name)
                         age = int(input("Enter age: ").strip() or emp.get_age())
+
                         InputValidator.age_checker(age)
                         salary = float(input("Enter salary: ").strip() or emp.get_salary())
                         InputValidator.salary_checker(salary)
