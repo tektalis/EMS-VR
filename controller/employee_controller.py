@@ -35,6 +35,7 @@ class EmployeeController:
 
         while True:
             operation = self.view.get_operation()
+            operation=operation.lower()
             match operation:
                 case Operation.add.value:
                     try:
@@ -70,11 +71,6 @@ class EmployeeController:
 
                 
                 case Operation.update.value:
-                    print("Below are the existing details in storage\n")
-                    emp=self.repository.read_employee()
-                    for e in emp:
-                        print(emp)
-                    print("\n")
                     try:
                         print("Enter Employee ID to update:")
                         id=input()
@@ -99,6 +95,7 @@ class EmployeeController:
 
                     except Exception as e:
                         print(f"Error updating employee: {e}")
+
 
                 case Operation.delete.value:
                     print("Enter Employee ID to delete:")
