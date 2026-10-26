@@ -9,6 +9,7 @@ class InputValidator:
         if  re.search(r"[^A-Za-z ]",name):
             raise ValueError("Name contains numbers or special Characters")
         return True
+
         
 
     @staticmethod
@@ -29,18 +30,32 @@ class InputValidator:
             raise ValueError("Salary is less than 0")
         return True
 
+    @staticmethod
+    def id_format_checker(id):
+        if re.fullmatch(r"EMP\d{3}",id):
+                    return True
+        else:
+            raise ValueError("Provided ID is invalid")
+
+
 
     def id_checker(storage, id):
-        match storage:
-            case DatabaseType.database.value:
-                if DatabaseDAO.read_one_employee(id) is None:
-                    raise ValueError("Provided ID is not in Database")
-                return True
-            case DatabaseType.file.value:
-                if FileDAO.read_one_employee(id) is None:
-                    raise ValueError("Provided ID is not in File System")
-                return True
-            case DatabaseType.collection.value:
-                if CollectionDAO.read_one_employee(id) is None:
-                    raise ValueError("Provided ID is not in Collection System")
-                return True
+
+        try:
+            InputValidator.id_format_checker(id)
+        
+            match storage:
+                case DatabaseType.database.value:
+                    if DatabaseDAO.read_one_employee(id) is None:
+                        raise ValueError("Provided ID is not in Database")
+                    return True
+                case DatabaseType.file.value:
+                    if FileDAO.read_one_employee(id) is None:
+                        raise ValueError("Provided ID is not in File System")
+                    return True
+                case DatabaseType.collection.value:
+                    if CollectionDAO.read_one_employee(id) is None:
+                        raise ValueError("Provided ID is not in Collection System")
+                    return True
+        except ValueError as e:
+            print(e)

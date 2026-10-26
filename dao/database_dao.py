@@ -53,6 +53,8 @@ class DatabaseDAO(employeeRepository):
                 emp.append(employee(*row))
             return emp
 
+  
+
     def update_employee(self,emp):
             query="UPDATE employee SET name=%s,age=%s,salary=%s,dept=%s,mobile=%s WHERE id=%s"
             values=(emp.get_name(),emp.get_age(),emp.get_salary(),emp.get_dept(),emp.get_mobile(),emp.get_id())
