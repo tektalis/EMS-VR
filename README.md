@@ -19,7 +19,7 @@ This project demonstrates a basic layered architecture with:
 - Update employee details
 - Delete employee records
 - Select storage type at runtime
-- Basic validation for names, age, salary, and mobile numbers
+- Basic validation for names, age, salary, and mobile number
 
 ## Supported Storage Types
 
